@@ -51,6 +51,7 @@ a {
 /* Card and Image Styling */
 ion-card {
   text-align: center;
+  background-color: white;
 }
 
 ion-card img {
@@ -84,3 +85,8 @@ ion-footer {
   font-size: 22px;
   color: white;
 }
+
+ion-content {
+  --background: white;
+}
+
