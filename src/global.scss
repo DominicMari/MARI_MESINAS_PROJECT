@@ -42,10 +42,19 @@
   }
   
 @font-face {
-  font-family: Sweet;
-  src: url(assets/fonts/SweetieSummer.ttf);
+  font-family: 'Sweetie Summer';
+  src: url('assets/fonts/SweetieSummer.ttf');
 }
 
 ion-content {
   --background: white;
 }
+
+.header {
+  color: #2B1700;
+  font-family: 'Sweetie Summer';
+  font-size: 40px;
+}
+.displayText {
+  font-family: 'Lucida Sans';
+} 
