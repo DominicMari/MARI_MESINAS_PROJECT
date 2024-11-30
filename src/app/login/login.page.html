@@ -1,0 +1,86 @@
+<!-- <ion-content class="ion-padding">
+  <svg id="visual" viewBox="0 0 900 600" width="900" height="600" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"><rect x="0" y="0" width="900" height="600" fill="#ffffff"></rect><path d="M0 81L25 93.3C50 105.7 100 130.3 150 138C200 145.7 250 136.3 300 127C350 117.7 400 108.3 450 109.5C500 110.7 550 122.3 600 140.7C650 159 700 184 750 194.8C800 205.7 850 202.3 875 200.7L900 199L900 0L875 0C850 0 800 0 750 0C700 0 650 0 600 0C550 0 500 0 450 0C400 0 350 0 300 0C250 0 200 0 150 0C100 0 50 0 25 0L0 0Z" fill="#2B1700" stroke-linecap="round" stroke-linejoin="miter"></path></svg>
+  <h1 class="header">Login</h1>
+  <br />
+  <div class="squiggle">
+    <div class="squiggle-shape"></div>
+  </div>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input [(ngModel)]="email" type="email"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input [(ngModel)]="password" type="password"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <br />
+    <ion-row class="widgets-row">
+      <ion-col class="widgets" size="12">
+        <ion-spinner *ngIf="isLoading" slot="start"></ion-spinner>
+        <ion-button expand="block" (click)="login()" [disabled]="isLoading">
+          Login
+        </ion-button>
+        <p class="displayText">Forgot Password?</p>
+        <p class="displayText">No account yet? Register!</p>
+      </ion-col>
+    </ion-row>    
+  </ion-grid>
+</ion-content> -->
+
+<ion-content class="ion-padding">
+  <div class="background-svg">
+    <svg id="visual" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
+      <rect x="0" y="0" width="900" height="600" fill="#ffffff"></rect>
+      <path d="M0 81L25 93.3C50 105.7 100 130.3 150 138C200 145.7 250 136.3 300 127C350 117.7 400 108.3 450 109.5C500 110.7 550 122.3 600 140.7C650 159 700 184 750 194.8C800 205.7 850 202.3 875 200.7L900 199L900 0L875 0C850 0 800 0 750 0C700 0 650 0 600 0C550 0 500 0 450 0C400 0 350 0 300 0C250 0 200 0 150 0C100 0 50 0 25 0L0 0Z" fill="#2B1700" stroke-linecap="round" stroke-linejoin="miter"></path>
+    </svg>
+  </div>
+  <br /><br /><br /><br />
+  <h1 class="header">Login</h1>
+  <br />
+  <div class="squiggle">
+    <div class="squiggle-shape"></div>
+  </div>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input [(ngModel)]="email" type="email"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input [(ngModel)]="password" type="password"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <br />
+    <ion-row class="widgets-row">
+      <ion-col class="widgets" size="12">
+        <ion-spinner *ngIf="isLoading" slot="start"></ion-spinner>
+        <ion-button expand="block" (click)="login()" [disabled]="isLoading">
+          Login
+        </ion-button>
+        
+        <p class="displayText">
+          <a [routerLink]="'/fpass'">Forgot Password?</a></p>
+        <p class="displayText">
+          <a [routerLink]="'/register'">No account yet? Register!</a>
+        </p>
+                
+      </ion-col>
+    </ion-row>    
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,99 @@
+/* Ensure the background SVG covers the entire screen */
+ion-content {
+    position: relative;
+    height: 100%; /* Make sure content fills the entire screen */
+    overflow: hidden; /* Prevents overflow of content outside of the container */
+  }
+  
+  /* The background SVG container */
+  .background-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1; /* Keeps the SVG in the background */
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* Flexbox styling for login container */
+  .login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0 20px; /* Adds padding inside the container */
+  }
+  
+  /* Logo styles */
+  .logo {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: #5a3d2b;
+  }
+  
+  /* Login button styles */
+  .login-button {
+    background-color: #5a3d2b;
+    color: #fff;
+    margin-top: 1rem;
+  }
+  
+  /* Extra options like "Forgot Password" or "Register" links */
+  .extra-options {
+    margin-top: 1rem;
+    text-align: center;
+  
+    a {
+      color: #5a3d2b;
+      text-decoration: none;
+    }
+  }
+  
+  /* Remove background, borders, and shadows from ion items and inputs */
+  ion-item {
+    --border-width: 0px; /* Remove the border */
+    --background: transparent; /* Make the background transparent */
+  }
+  
+  ion-label {
+    color: #2B1700 !important; /* Change label text color */
+  }
+  
+  ion-input {
+    --background: transparent; /* Make the input background transparent */
+    --border-color: transparent; /* Remove the border */
+    --box-shadow: none; /* Remove any box shadow */
+    color: #2B1700; /* Set the text color */
+  }
+  
+  /* Center the content inside the widgets */
+  .widgets {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center; /* Centers text inside <p> tags */
+  }
+  
+  ion-col.widgets {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centering content horizontally */
+    justify-content: center; /* Centering content vertically */
+    text-align: center; /* Ensures text is also centered horizontally */
+    height: 100%; /* Ensure column takes full height */
+  }
+  
+  /* Style for the login button */
+  ion-button {
+    --border-radius: 10%;
+    width: 250px;
+    text-align: center;
+    font-family: 'Sweetie Summer';
+    font-size: 20px;
+  }
+  
