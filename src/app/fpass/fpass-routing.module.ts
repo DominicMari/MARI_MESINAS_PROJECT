@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { FpassPage } from './fpass.page';
+import { ForgotPasswordPage } from './fpass.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: FpassPage
+    component: ForgotPasswordPage
   }
 ];
 

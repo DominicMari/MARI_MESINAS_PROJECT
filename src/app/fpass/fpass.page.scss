@@ -97,3 +97,10 @@ ion-content {
     font-size: 20px;
   }
   
+  .custom-toast {
+    --background: #2B1700; /* Custom background color */
+    --color: white;         /* Text color */
+    --border-radius: 10px;  /* Optional, adds rounded corners */
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Optional, adds shadow effect */
+  }
+  

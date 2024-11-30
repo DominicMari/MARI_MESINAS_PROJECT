@@ -6,7 +6,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { FpassPageRoutingModule } from './fpass-routing.module';
 
-import { FpassPage } from './fpass.page';
+import { ForgotPasswordPage } from './fpass.page';
 
 @NgModule({
   imports: [
@@ -15,6 +15,6 @@ import { FpassPage } from './fpass.page';
     IonicModule,
     FpassPageRoutingModule
   ],
-  declarations: [FpassPage]
+  declarations: [ForgotPasswordPage]
 })
 export class FpassPageModule {}
