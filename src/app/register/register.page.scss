@@ -97,3 +97,26 @@ ion-content {
     font-size: 20px;
   }
   
+  .modal-content {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .modal-content img {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+  }
+  
+  .modal-content p {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .no-border {
+    --border-width: 0px;
+    --border-style: none;
+    --inner-border-width: 0px;
+    --highlight-border-width: 0px;
+  }
+  

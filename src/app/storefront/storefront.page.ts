@@ -4,12 +4,17 @@ import { Router } from '@angular/router';
 import { ChangeDetectorRef } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';  // Import Firestore
 
-// Define the interface for user data
+interface Product {
+  name: string;
+  price: number;
+  image: string;
+}
+
 interface User {
   firstName: string;
   lastName: string;
   email: string;
-  displayName?: string;  // Optional field for Firebase Auth displayName
+  displayName?: string;
 }
 
 @Component({
@@ -20,6 +25,7 @@ interface User {
 export class StorefrontPage implements OnInit {
   currentUser: string | null = null; // To hold the user's name
   isLoading = true; // To track loading state
+  products: Product[] = []; // Array to hold products fetched from Firestore
 
   constructor(
     private afAuth: AngularFireAuth, 
@@ -34,39 +40,35 @@ export class StorefrontPage implements OnInit {
       console.log('User object from Firebase:', user);
 
       if (user) {
-        // First, check if displayName exists in the user object
+        // User authentication logic
         if (user.displayName) {
-          // If displayName exists, use it directly
           this.currentUser = user.displayName;
         } else {
-          // If no displayName, attempt to use firstName + lastName from Firestore
           this.firestore.collection('users').doc(user.uid).get().subscribe(doc => {
             if (doc.exists) {
-              const userData = doc.data() as User;  // Cast to the User interface
+              const userData = doc.data() as User;  // Cast doc.data() to the User interface
               const firstName = userData.firstName || '';
               const lastName = userData.lastName || '';
               this.currentUser = `${firstName} ${lastName}`.trim() || user.email || 'User';
             } else {
-              this.currentUser = user.email || 'User'; // Fallback to email if no name in Firestore
+              this.currentUser = user.email || 'User';
             }
-            console.log('Current User:', this.currentUser);
           });
         }
-
-        console.log('User Object:', user);
-      } else { 
-        // If no user is logged in, set currentUser to null and redirect
+      } else {
         this.currentUser = null;
-        console.log('No user logged in');
         this.router.navigate(['/login']);
       }
 
-      this.isLoading = false;  // Set loading to false after auth state is set
-      this.cdr.detectChanges();  // Trigger change detection manually
+      // Fetch products from Firestore
+      this.firestore.collection<Product>('products').get().subscribe(snapshot => {
+        this.products = snapshot.docs.map(doc => doc.data());
+        this.isLoading = false;
+        this.cdr.detectChanges();  // Trigger change detection manually after fetching data
+      });
     });
   }
 
-  // Log out function
   logOut() {
     this.afAuth.signOut().then(() => {
       this.router.navigate(['/login']);

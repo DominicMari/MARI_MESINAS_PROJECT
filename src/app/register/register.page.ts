@@ -15,6 +15,7 @@ export class RegisterPage {
   email: string = '';
   password: string = '';
   confirmPassword: string = '';
+  isAdmin: boolean = false; // Add field for admin checkbox
   isLoading: boolean = false;
 
   constructor(
@@ -28,27 +29,28 @@ export class RegisterPage {
       alert('Please fill out all fields.');
       return;
     }
-  
+
     if (this.password !== this.confirmPassword) {
       alert('Passwords do not match.');
       return;
     }
-  
+
     this.isLoading = true;
-  
+
     try {
       // Firebase authentication
       const userCredential = await this.afAuth.createUserWithEmailAndPassword(this.email, this.password);
-  
+
       // Save user data in Firestore
       await this.firestore.collection('users').doc(userCredential.user?.uid).set({
         firstName: this.firstName,
         lastName: this.lastName,
         address: this.address,
         email: this.email,
+        role: this.isAdmin ? 'admin' : 'user', // Save role based on checkbox
         createdAt: new Date(),
       });
-  
+
       alert('Registration successful!');
       this.router.navigate(['/login']); // Navigate to the login page
     } catch (error) {
@@ -61,5 +63,5 @@ export class RegisterPage {
     } finally {
       this.isLoading = false;
     }
-  }  
+  }
 }

@@ -18,7 +18,11 @@ const routes: Routes = [
   {
     path: 'fpass',
     loadChildren: () => import('./fpass/fpass.module').then( m => m.FpassPageModule)
+  },  {
+    path: 'admin-landing',
+    loadChildren: () => import('./admin-landing/admin-landing.module').then( m => m.AdminLandingPageModule)
   },
+
 
 
 ];

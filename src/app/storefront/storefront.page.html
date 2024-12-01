@@ -20,26 +20,31 @@
           </ng-template>                  
         </ion-label>
       </ion-item>
-      <ion-item routerLink="/profile">
+      <ion-item class="menu-item" routerLink="/profile">
         <ion-icon name="person-outline" slot="start"></ion-icon>
         <ion-label>Your Profile</ion-label>
       </ion-item>
-      <ion-item routerLink="/products">
+      
+      <ion-item class="menu-item" routerLink="/products">
         <ion-icon name="cart-outline" slot="start"></ion-icon>
         <ion-label>Our Products</ion-label>
       </ion-item>
-      <ion-item routerLink="/developer-info">
+      
+      <ion-item class="menu-item" routerLink="/developer-info">
         <ion-icon name="information-circle-outline" slot="start"></ion-icon>
         <ion-label>Developer Information</ion-label>
       </ion-item>
-      <ion-item routerLink="/about">
+      
+      <ion-item class="menu-item" routerLink="/about">
         <ion-icon name="help-circle-outline" slot="start"></ion-icon>
         <ion-label>About the App</ion-label>
       </ion-item>
-      <ion-item (click)="logOut()">
-        <ion-icon name="help-circle-outline" slot="start"></ion-icon>
+      
+      <ion-item class="menu-item" (click)="logOut()">
+        <ion-icon name="log-out-outline" slot="start"></ion-icon>
         <ion-label>Log Out</ion-label>
       </ion-item>      
+
     </ion-list>
   </ion-content>
 </ion-menu>
@@ -63,23 +68,18 @@
     <ion-grid>
       <h2>Today's Classics</h2>
       <ion-row>
-        <ion-col size="6">
-          <ion-router-link [routerLink]="['/product', 'vanilla']">
+        <ion-col size="6" *ngFor="let product of products">
+          <ion-router-link [routerLink]="['/product', product.name.toLowerCase()]">
             <ion-card>
-              <img src="../../assets/Vanilla_Ice_Cream_1.jpg" alt="Classic Vanilla Ice Cream" />
-              <ion-card-content>Classic Vanilla Ice Cream</ion-card-content>
-            </ion-card>
-          </ion-router-link>
-        </ion-col>
-        <ion-col size="6">
-          <ion-router-link [routerLink]="['/product', 'strawberry']">
-            <ion-card>
-              <img src="../../assets/Strawberry_Ice_Cream_2.jpg" alt="Classic Strawberry Ice Cream" />
-              <ion-card-content>Classic Strawberry Ice Cream</ion-card-content>
+              <!-- Use property binding to set the src dynamically -->
+              <img [src]="'../../assets/' + product.image" alt="{{ product.name }}" *ngIf="product.image"/>
+              <ion-card-content>{{ product.name }}</ion-card-content>
+              <ion-card-content>{{ product.price | currency: 'PHP' }}</ion-card-content>
             </ion-card>
           </ion-router-link>
         </ion-col>
       </ion-row>
+          
       <h2>
         Ice Creams <a href="#">See More →</a>
       </h2>
@@ -119,8 +119,8 @@
       </ion-row>
     </ion-grid>
   </div>
+  <br/> <br/><br/> <br/>
 </ion-content>
-<br/> <br/><br/> <br/><br/> <br/>
 <ion-footer>
   <ion-toolbar color="primary">
     <ion-row class="footer-icons">

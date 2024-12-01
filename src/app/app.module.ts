@@ -27,6 +27,9 @@ import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+import { initializeApp } from 'firebase/app';  // Import Firebase core module
+import { getAuth } from 'firebase/auth';      // Import Firebase auth service
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -39,8 +42,14 @@ import { AppRoutingModule } from './app-routing.module';
     AngularFireAuthModule, // If using Firebase Authentication
   ],
   providers: [
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy } // Ionic routing strategy for better navigation
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, // Ionic routing strategy for better navigation
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+  constructor() {
+    // Initialize Firebase manually if required
+    initializeApp(environment.firebaseConfig);
+    const auth = getAuth();
+  }
+}

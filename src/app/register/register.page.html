@@ -69,12 +69,22 @@
         </ion-item>
       </ion-col>
     </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item class="no-border">
+          <ion-label>Register as Admin?</ion-label>
+          <ion-checkbox slot="start" [(ngModel)]="isAdmin"></ion-checkbox>
+        </ion-item>
+      </ion-col>
+    </ion-row>    
+
     <br />
     <ion-row class="widgets-row">
       <ion-col class="widgets" size="12">
         <!-- <ion-spinner *ngIf="isLoading" slot="start"></ion-spinner> -->
         <ion-button expand="block" (click)="registerUser()">
-          Register
+          Register 
         </ion-button>
         <p class="displayText">
           <a [routerLink]="'/login'"> Nevermind, go back to login.</a>
@@ -83,4 +93,5 @@
       </ion-col>
     </ion-row>    
   </ion-grid>
+  
 </ion-content>

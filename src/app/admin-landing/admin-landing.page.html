@@ -1,0 +1,108 @@
+<!-- storefront.page.html -->
+<ion-menu side="start" menuId="first" contentId="main-content">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Scoops</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="sidebar">
+    <ion-list>
+      <ion-item>
+        <ion-avatar slot="start" class="avatar">
+          <img src="../../assets/Vanilla_Ice_Cream_1.jpg" alt="Profile Picture" />
+        </ion-avatar>
+        <ion-label>
+          <h2 *ngIf="currentUser; else loggedOut">
+            Welcome, {{ currentUser || 'Guest' }}
+          </h2>
+          <ng-template #loggedOut>
+            <h2>Please log in to see the storefront</h2>
+          </ng-template>                  
+        </ion-label>
+      </ion-item>      
+      <ion-item class="menu-item" routerLink="/products">
+        <ion-icon name="cart-outline" slot="start"></ion-icon>
+        <ion-label>Manage Products</ion-label>
+      </ion-item>
+      
+      <ion-item class="menu-item" routerLink="/developer-info">
+        <ion-icon name="information-circle-outline" slot="start"></ion-icon>
+        <ion-label>Developer Information</ion-label>
+      </ion-item>
+      
+      <ion-item class="menu-item" (click)="logOut()">
+        <ion-icon name="log-out-outline" slot="start"></ion-icon>
+        <ion-label>Log Out</ion-label>
+      </ion-item>      
+
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Scoops</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="cart-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content id="main-content" class="ion-padding">
+  <div class="content-wrapper">
+    <h2>Add New Product</h2>
+    <form (ngSubmit)="onSubmit()">
+      <ion-item>
+        <ion-label position="stacked">Product Name</ion-label>
+        <ion-input [(ngModel)]="productName" name="productName" required></ion-input>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label position="stacked">Price</ion-label>
+        <ion-input [(ngModel)]="price" name="price" type="number" required></ion-input>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label position="stacked">Product Image</ion-label>
+        <input type="file" (change)="onFileChange($event)" accept="image/*" required />
+      </ion-item>
+    
+      <ion-button expand="full" type="submit" [disabled]="!productName || !price || !imageFile">
+        Add Product
+      </ion-button>
+    </form>          
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="primary">
+    <ion-row class="footer-icons">
+      <ion-col>
+        <ion-button fill="clear" routerLink="/home">
+          <ion-icon name="home-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button fill="clear" routerLink="/home">
+          <ion-icon name="search-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button fill="clear" routerLink="/products">
+          <ion-icon name="basket-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button fill="clear" routerLink="/profile">
+          <ion-icon name="person-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>
+<br /><br /><br />
